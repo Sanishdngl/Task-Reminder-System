@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import taskRoutes from './routes/task.routes';
 import { swaggerSpec } from './config/swagger';
+import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
 
@@ -21,9 +22,6 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // --- Global Error Handler ---
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  res.status(500).json({ message: err.message });
-});
+app.use(errorHandler);
 
 export default app;
