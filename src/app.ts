@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import taskRoutes from './routes/task.routes';
 import { swaggerSpec } from './config/swagger';
